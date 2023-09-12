@@ -48,7 +48,14 @@ def h1(s):
             res += 1
     return res
 
-def h3(s):
-    # implement this function
+ def h3(s):
+    goal = (1, 2, 3, 4, 5, 6, 7, 8, 0)
     board, _, _ = s
-    return 0
+    res = 0
+    for idx in range(0, 9):
+        if board[idx] != 0:  # Skip the blank tile
+            goal_idx = goal.index(board[idx])
+            row_diff = abs(idx // 3 - goal_idx // 3)
+            col_diff = abs(idx % 3 - goal_idx % 3)
+            res += row_diff + col_diff
+    return res  
